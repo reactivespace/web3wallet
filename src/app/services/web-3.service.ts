@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class Web3Service {
  public web3: any;
-
+private balance:string;
   constructor() {
     //call a function
    }
@@ -18,17 +18,26 @@ export class Web3Service {
   return true;
   }
   
-  balance(){
-  this.web3.eth.getBalance("0xdc8F20170C0946ACCF9627b3EB1513CFD1c0499f")
-     .then(console.log);  
-
+  getbalance(ethaddress){
+    return   this.web3.eth.getBalance(ethaddress)
+        // .then(detail=>{
+        //   return detail;
+        //    //this.balance
+        // })
+        ;  
+  //      return this.balance;
   }
-   ethAccounts(){
+  
+   create_ethAccounts(){
      
     var object=this.web3.eth.accounts.create();
-    // this.web3.eth.getAccounts()
-    // .then(console.log);
-    console.log(object);
+    console.log("account details"+object);
+    return object;
   
+   }
+   ethAccounts(){
+    var accounts =this.web3.eth.accounts;
+      console.log(accounts);
+      return accounts;
    }
 }
