@@ -13,7 +13,8 @@ private balance:string;
    }
  
   web3connection():boolean{
-  this.web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/EtPXXiT2Z0TP47IHQl2D"));
+    // https://ropsten.infura.io/EtPXXiT2Z0TP47IHQl2D
+  this.web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/ryE6emslW7ih4EhTyDSE"));
   console.log(this.web3 + "function is called ");
   return true;
   }
@@ -29,15 +30,26 @@ private balance:string;
   }
   
    create_ethAccounts(){
-     
-    var object=this.web3.eth.accounts.create();
-    console.log("account details"+object);
-    return object;
+    var object=this.web3.eth.personal.newAccount("pass",function(error,resp){
+       if(error)
+       {
+         console.log("not created due to"+error);
+
+       }else{
+         console.log("created successfully");
+
+       }
+    })
+    // console.log(this.web3.eth.accounts.create());
+    // var object=this.web3.eth.personal.newAccount("pass");
+    // console.log("account details"+object);
+    // return object;
   
    }
-   ethAccounts(){
-    var accounts =this.web3.eth.accounts;
-      console.log(accounts);
+   ethAccounts(): any{
+     
+    var accounts =this.web3.eth.getAccounts();
+    console.log(accounts);
       return accounts;
    }
 }

@@ -9,8 +9,9 @@ export class AppComponent {
   //  Web3Service: any;
   title = 'ETH Connection';
   address="";
-  Ethbalance: string;
+  Ethbalance;
   accont;
+  object;
   constructor(private web3Service:Web3Service)
   {
     //call function
@@ -29,26 +30,26 @@ export class AppComponent {
 }
 //create ether account
 generateAcc(){
-  this.web3Service.create_ethAccounts().subsribe(object=>{
-    this.address=object.address;
-  });
+  var val=this.web3Service.create_ethAccounts();
+  // this.object=val.address;
+  // console.log(this.object)
 }
 
 // get balance of an ether account 
 getbalance(ethaddress){
   //call func and pass the address 
 this.web3Service.getbalance(ethaddress).then(x=>{
-  this.Ethbalance=x
+  this.Ethbalance=parseInt(x);
+  this.displayAccounts();
 });
-  console.log(this.Ethbalance);
+  // console.log(this.Ethbalance);
   
 
 }
   
 // all accounts 
 displayAccounts(){
-  this.web3Service.ethAccounts().subsribe(acc=>{
-   this.accont=acc;
-  })
+  const val = this.web3Service.ethAccounts()
+  console.log(val);
 }
 }
