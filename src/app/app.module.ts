@@ -13,6 +13,7 @@ import {Web3Service} from './services/web-3.service';
     BrowserModule
   ],
   providers: [
+    
     Web3Service
   ],
   bootstrap: [AppComponent]
