@@ -11,7 +11,7 @@ private balance:string;
   constructor() {
     //call a function
    }
- 
+ //connection
   web3connection():boolean{
     // https://ropsten.infura.io/EtPXXiT2Z0TP47IHQl2D
   this.web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/ryE6emslW7ih4EhTyDSE"));
