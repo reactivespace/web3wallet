@@ -40,13 +40,16 @@ getbalance(ethaddress){
   //call func and pass the address 
 this.web3Service.getbalance(ethaddress).then(x=>{
   this.Ethbalance=parseInt(x);
-  this.displayAccounts();
+  // this.displayAccounts();
 });
   // console.log(this.Ethbalance);
   
 
 }
-  
+//for transactions
+sendtrans(){
+this.web3Service.sendamount(this.Ethbalance);
+}
 // all accounts 
 displayAccounts(){
   const val = this.web3Service.ethAccounts()
